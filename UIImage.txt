@@ -1,0 +1,50 @@
+ private let  myimg:UIImageView   = {
+        let img = UIImageView(image:UIImage( named: "user"))
+        img.contentMode = .scaleAspectFill
+        img.layer.cornerRadius = 100
+        img.clipsToBounds = true
+        return img
+    }()
+
+ private let mylabel5:UIButton = {
+        let bt = UIButton()
+        bt.setTitle("Signup", for: .normal)
+        bt.addTarget(self, action: #selector(imagechecker), for: .touchUpInside)
+        return bt
+    }()
+private let imagePicker:UIImagePickerController = {
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        return imagePicker
+    }()
+
+view.addSubview(myimg)
+view.addSubview(mylabel5)
+ imagePicker.delegate = self
+
+ btn.frame = CGRect(x: 67  , y:313, width: 200, height: 200)
+ mylabel5.frame = CGRect(x: 52  , y:529, width: 261, height: 23)
+
+
+extension RegPage4:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let selectedImage = info[.originalImage] as? UIImage {
+            myImageView.image = selectedImage
+        }
+        
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+}
+
+@objc private func imagechecker() {
+        print("gallery called")
+        imagePicker.sourceType = .photoLibrary
+        DispatchQueue.main.async {
+            self.present(self.imagePicker, animated: true)
+        }
+    }
