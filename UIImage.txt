@@ -6,9 +6,9 @@
         return img
     }()
 
- private let mylabel5:UIButton = {
+ private let btn1:UIButton = {
         let bt = UIButton()
-        bt.setTitle("Signup", for: .normal)
+        bt.setTitle("Please Select Your Profile ", for: .normal)
         bt.addTarget(self, action: #selector(imagechecker), for: .touchUpInside)
         return bt
     }()
@@ -19,11 +19,11 @@ private let imagePicker:UIImagePickerController = {
     }()
 
 view.addSubview(myimg)
-view.addSubview(mylabel5)
+view.addSubview(btn1)
  imagePicker.delegate = self
 
- btn.frame = CGRect(x: 67  , y:313, width: 200, height: 200)
- mylabel5.frame = CGRect(x: 52  , y:529, width: 261, height: 23)
+ btn1.frame = CGRect(x: 45  , y:445, width: 261, height: 23)
+ myimg.frame = CGRect(x: 75  , y:529, width: 200, height: 200)
 
 
 extension RegPage4:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
